@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synergy Creations | Creative Team Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* CSS Styling */
+
+        /* ------------------- */
+        /* 1. Global Styles & Variables */
+        /* ------------------- */
+        :root {
+            --primary-color: #0a2540; /* Deep Blue */
+            --secondary-color: #425466; /* Steel Gray */
+            --accent-color: #635bff; /* Vibrant Violet */
+            --background-color: #f6f9fc; /* Light Grayish Blue */
+            --surface-color: #ffffff; /* White */
+            --border-color: #e6ebf1;
+            --text-light: #8898aa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--secondary-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.2rem; margin-bottom: 1.5rem; text-align: center;}
+        h3 { font-size: 1.5rem; }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+        }
+
+        /* ------------------- */
+        /* 2. Header & Navigation */
+        /* ------------------- */
+        .header {
+            width: 100%;
+            padding: 1.5rem 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .header.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-color);
+        }
+        
+        /* ------------------- */
+        /* 3. Hero Section */
+        /* ------------------- */
+        #hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(246, 249, 252, 0.1), rgba(99, 91, 255, 0.1));
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: #534bff;
+        }
+
+        /* ------------------- */
+        /* 4. About Section */
+        /* ------------------- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .team-member-card {
+            background-color: var(--surface-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(99, 91, 255, 0.1);
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--accent-color);
+        }
+
+        .member-name {
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .member-bio {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* ------------------- */
+        /* 5. Portfolio Section */
+        /* ------------------- */
+        #portfolio {
+            background-color: var(--surface-color);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* ------------------- */
+        /* 6. Contact & Footer */
+        /* ------------------- */
+        #contact {
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .social-links a {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ------------------- */
+        /* 7. Responsive Design */
+        /* ------------------- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero-content h1 { font-size: 3rem; }
+            h2 { font-size: 1.8rem; }
+            
+            .nav-links {
+                display: none; /* Simple hiding for this example. A real site would use a hamburger menu. */
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header" id="header">
+        <nav class="container navbar">
+            <a href="#" class="logo">0/1knapsack</a>
+            <ul class="nav-links">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="hero">
+            <div class="container hero-content">
+                <h1>Crafting Digital Excellence, Together.</h1>
+                <p>We are a creative duo dedicated to building beautiful, functional, and user-centric web experiences. From concept to launch, we bring your vision to life.</p>
+                <a href="#portfolio" class="btn">View Our Work</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>Meet the Team</h2>
+                <p class="section-subtitle">We combine our unique skills in design and development to create powerful digital solutions. Our synergy is our strength.</p>
+                
+                <div class="team-grid">
+                    <div class="team-member-card">
+                        <h3 class="member-name">Aswathi.M</h3>
+                        <p class="member-role">Software devoloper</p>
+                        <p class="member-bio">With a passion for clean code and robust architecture, John transforms complex problems into elegant, high-performance applications.</p>
+                    </div>
+
+                    <div class="team-member-card">
+                        <h3 class="member-name">Dhanusri Reddy</h3>
+                        <p class="member-role">Software devoloper</p>
+                        <p class="member-bio">Jane exceptional eye for detail and deep understanding of user experience, ensuring every project is not only beautiful but also intuitive.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <div class="container">
+                <h2>Our Selected Work</h2>
+                <p class="section-subtitle">Here are a few projects we're proud of. Each one represents our commitment to quality, innovation, and client satisfaction.</p>
+                
+                <div class="portfolio-grid">
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Project 1" class="project-image">
+                        <div class="project-info">
+                            <h3>Data Analytics Dashboard</h3>
+                            <p>A comprehensive B2B platform for data visualization and business intelligence.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="Project 4" class="project-image">
+                        <div class="project-info">
+                            <h3>Digital Marketing Agency Site</h3>
+                            <p>An engaging and results-driven website for a leading digital marketing agency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container contact-content">
+                <h2>Let's Build Something Great</h2>
+                <p>Have a project in mind? We'd love to hear about it. Reach out to us and let's start a conversation about how we can help you achieve your goals.</p>
+                <br>
+                <a href="mailto:hello@synergy.com" class="btn">Get In Touch</a>
+                
+                <ul class="social-links">
+                    <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+                    <li><a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a></li>
+                    <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 <a href="#">Synergy Creations</a>. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for header scroll effect
+        const header = document.getElementById('header');
+        window.onscroll = function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        };
+    </script>
+</body>
+</html>
