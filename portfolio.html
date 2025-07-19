@@ -3,433 +3,385 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synergy Creations | Creative Team Portfolio</title>
+    <title>0/1knapsack | Software Designer Portfolio</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* CSS Styling */
-
-        /* ------------------- */
-        /* 1. Global Styles & Variables */
-        /* ------------------- */
         :root {
-            --primary-color: #0a2540; /* Deep Blue */
-            --secondary-color: #425466; /* Steel Gray */
-            --accent-color: #635bff; /* Vibrant Violet */
-            --background-color: #f6f9fc; /* Light Grayish Blue */
-            --surface-color: #ffffff; /* White */
-            --border-color: #e6ebf1;
-            --text-light: #8898aa;
+            --primary-teal: #004d40;  /* Deep, elegant teal */
+            --accent-mint: #66daba;   /* Bright, modern mint */
+            --dark-charcoal: #1a1a1a; /* Rich black for text */
+            --light-gray: #f8f9fa;    /* Clean background */
+            --surface-white: #ffffff;
+            --border-color: #e0e0e0;
+            --text-on-dark: #e0f2f1;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background-color);
-            color: var(--secondary-color);
-            line-height: 1.7;
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--dark-charcoal);
+            display: flex;
         }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        h1, h2, h3 {
-            color: var(--primary-color);
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        h1 { font-size: 3rem; }
-        h2 { font-size: 2.2rem; margin-bottom: 1.5rem; text-align: center;}
-        h3 { font-size: 1.5rem; }
-
-        section {
-            padding: 6rem 0;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto 3rem auto;
-        }
-
+        
         /* ------------------- */
-        /* 2. Header & Navigation */
+        /* LAYOUT: FIXED LEFT, SCROLL RIGHT */
         /* ------------------- */
-        .header {
-            width: 100%;
-            padding: 1.5rem 0;
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            position: fixed;
+        .left-panel {
+            width: 340px;
+            height: 100vh;
+            position: sticky;
             top: 0;
-            left: 0;
-            z-index: 1000;
-            transition: box-shadow 0.3s ease;
-        }
-        
-        .header.scrolled {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .navbar {
+            background-color: var(--primary-teal);
+            color: var(--text-on-dark);
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            align-items: center;
+            padding: 3rem;
+            flex-shrink: 0;
         }
 
-        .logo {
-            font-size: 1.5rem;
+        .right-panel {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        /* ------------------- */
+        /* LEFT PANEL STYLING */
+        /* ------------------- */
+        .brand-header { text-align: center; }
+        .brand-header .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: white;
             text-decoration: none;
+            display: inline-block;
+            border: 2px solid var(--accent-mint);
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.5rem;
         }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--secondary-color);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--accent-color);
+        .brand-header .tagline {
+            font-size: 0.9rem;
+            color: var(--text-on-dark);
+            opacity: 0.8;
         }
         
-        /* ------------------- */
-        /* 3. Hero Section */
-        /* ------------------- */
-        #hero {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, rgba(246, 249, 252, 0.1), rgba(99, 91, 255, 0.1));
+        .main-nav ul { list-style: none; margin-top: 3rem; }
+        .main-nav li { margin: 0.75rem 0; }
+        .main-nav a {
+            text-decoration: none;
+            color: var(--text-on-dark);
+            font-weight: 500;
+            padding: 0.5rem;
+            display: block;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .main-nav a:hover {
+            background: linear-gradient(to right, rgba(102, 218, 186, 0.1), transparent);
+            border-left-color: rgba(102, 218, 186, 0.5);
+        }
+        .main-nav a.active {
+            color: white;
+            font-weight: 700;
+            border-left-color: var(--accent-mint);
         }
 
-        .hero-content {
-            max-width: 800px;
+        .social-footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+        .social-footer a {
+            color: var(--text-on-dark);
+            font-size: 1.2rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .social-footer a:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .social-footer .copyright { text-align: center; font-size: 0.8rem; opacity: 0.5; }
+
+        /* ------------------- */
+        /* RIGHT PANEL SECTIONS & ANIMATIONS */
+        /* ------------------- */
+        section {
+            padding: 6rem 4rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        section:last-of-type { border-bottom: none; }
+        
+        /* HERO SECTION */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(-45deg, #e8eaf6, #fce4ec, #e3f2fd, #e0f2f1);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .hero-content h1 {
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--primary-teal);
             margin-bottom: 1rem;
-            font-size: 4rem;
-            font-weight: 700;
         }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--secondary-color);
+        
+        .typing-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 3rem;
+            background-color: var(--accent-mint);
+            animation: blink 1s infinite;
         }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        .hero-content .subtitle { font-size: 1.1rem; color: #333; max-width: 600px; margin-bottom: 2rem; }
 
         .btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: var(--accent-color);
+            padding: 0.8rem 2.5rem;
+            background-color: var(--primary-teal);
             color: white;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 500;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
-        
         .btn:hover {
-            transform: translateY(-3px);
-            background-color: #534bff;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 77, 64, 0.2);
         }
 
-        /* ------------------- */
-        /* 4. About Section */
-        /* ------------------- */
-        .team-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            align-items: start;
-        }
-
-        .team-member-card {
-            background-color: var(--surface-color);
-            border-radius: 12px;
-            padding: 2.5rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-
-        .team-member-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(99, 91, 255, 0.1);
-        }
-
-        .member-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            border: 4px solid var(--accent-color);
-        }
-
-        .member-name {
-            margin-bottom: 0.5rem;
-        }
-
-        .member-role {
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
+        /* GENERAL SECTION STYLING */
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.5rem; }
+        .section-header p { font-size: 1.1rem; max-width: 600px; margin: 0.5rem auto 0 auto; color: #555; }
         
-        .member-bio {
-            font-size: 0.95rem;
-            color: var(--text-light);
+        #about .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        #about .about-text h3 { color: var(--primary-teal); margin-bottom: 1rem; }
+        #about .about-photos { display: flex; justify-content: center; }
+        #about .about-photos img {
+            width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--surface-white); box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateX(10%);
         }
+        #about .about-photos img:last-child { z-index: 2; transform: translateX(-10%); }
 
-        /* ------------------- */
-        /* 5. Portfolio Section */
-        /* ------------------- */
-        #portfolio {
-            background-color: var(--surface-color);
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
+        #portfolio { background-color: var(--surface-white); }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
         .project-card {
-            background: var(--surface-color);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-            transition: transform 0.3s ease;
-            border: 1px solid var(--border-color);
+            background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transform-style: preserve-3d;
         }
-
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: perspective(1000px) rotateY(3deg) rotateX(7deg) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .project-card img { width: 100%; height: 250px; object-fit: cover; display: block; }
+        .project-info { padding: 1.5rem; }
+
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .skill-item { display: flex; align-items: center; gap: 1rem; background: var(--surface-white); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); transition: all 0.3s ease; }
+        .skill-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .skill-item i { font-size: 2rem; color: var(--accent-mint); }
+
+        #contact { background-color: var(--dark-charcoal); color: white; text-align: center; }
+        #contact h2, #contact p { color: white; opacity: 0.9; }
+
+        /* SCROLL ANIMATIONS */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
-        .project-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .project-info {
-            padding: 1.5rem;
-        }
-
-        .project-info h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .project-info p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-        }
-
-        /* ------------------- */
-        /* 6. Contact & Footer */
-        /* ------------------- */
-        #contact {
-            text-align: center;
-        }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .social-links {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .social-links a {
-            color: var(--secondary-color);
-            font-size: 1.5rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-color);
-            transform: scale(1.1);
-        }
-
-        .footer {
-            background-color: var(--primary-color);
-            color: var(--background-color);
-            text-align: center;
-            padding: 2rem 0;
-            font-size: 0.9rem;
+        @media (max-width: 1200px) {
+            .left-panel { width: 280px; padding: 2rem; }
+            section { padding: 5rem 3rem; }
         }
         
-        .footer a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* ------------------- */
-        /* 7. Responsive Design */
-        /* ------------------- */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .hero-content h1 { font-size: 3rem; }
-            h2 { font-size: 1.8rem; }
-            
-            .nav-links {
-                display: none; /* Simple hiding for this example. A real site would use a hamburger menu. */
+        @media (max-width: 992px) {
+            body { flex-direction: column; }
+            .left-panel {
+                width: 100%; height: auto; position: static;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+                padding: 1.5rem;
             }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
+            .main-nav { display: none; }
+            #about .about-content { grid-template-columns: 1fr; text-align: center; }
         }
-
     </style>
 </head>
 <body>
 
-    <header class="header" id="header">
-        <nav class="container navbar">
-            <a href="#" class="logo">0/1knapsack</a>
-            <ul class="nav-links">
-                <li><a href="#hero" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <aside class="left-panel">
+        <div>
+            <div class="brand-header">
+                <a href="#hero" class="logo">0/1</a>
+                <p class="tagline">Aswathi M. & Dhanusri Reddy</p>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <footer class="social-footer">
+            <ul class="social-links">
+                <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                <li><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+                <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
             </ul>
-        </nav>
-    </header>
+            <p class="copyright">&copy; 2025 Kochi, Kerala</p>
+        </footer>
+    </aside>
 
-    <main>
-
+    <main class="right-panel">
         <section id="hero">
-            <div class="container hero-content">
-                <h1>Crafting Digital Excellence, Together.</h1>
-                <p>We are a creative duo dedicated to building beautiful, functional, and user-centric web experiences. From concept to launch, we bring your vision to life.</p>
+            <div class="hero-content">
+                <h1 id="typing-text"></h1><span class="typing-cursor"></span>
+                <p class="subtitle">A creative duo of software designers building high-performance, beautiful applications that solve real-world problems.</p>
                 <a href="#portfolio" class="btn">View Our Work</a>
             </div>
         </section>
 
         <section id="about">
-            <div class="container">
-                <h2>Meet the Team</h2>
-                <p class="section-subtitle">We combine our unique skills in design and development to create powerful digital solutions. Our synergy is our strength.</p>
-                
-                <div class="team-grid">
-                    <div class="team-member-card">
-                        <h3 class="member-name">Aswathi.M</h3>
-                        <p class="member-role">Software devoloper</p>
-                        <p class="member-bio">With a passion for clean code and robust architecture, John transforms complex problems into elegant, high-performance applications.</p>
-                    </div>
-
-                    <div class="team-member-card">
-                        <h3 class="member-name">Dhanusri Reddy</h3>
-                        <p class="member-role">Software devoloper</p>
-                        <p class="member-bio">Jane exceptional eye for detail and deep understanding of user experience, ensuring every project is not only beautiful but also intuitive.</p>
-                    </div>
+             <div class="section-header animate-on-scroll">
+                <h2>Two Minds, One Vision</h2>
+                <p>We unite our skills in front-end and back-end development to deliver seamless, end-to-end digital products.</p>
+            </div>
+            <div class="about-content">
+                 <div class="about-photos animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&q=80&fm=jpg&crop=faces&fit=crop&h=400&w=400" alt="Dhanusri Reddy">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&q=80&fm=jpg&crop=faces&fit=crop&h=400&w=400" alt="Aswathi M.">
+                </div>
+                <div class="about-text animate-on-scroll" style="transition-delay: 200ms;">
+                    <h3>Crafting the Future, Line by Line.</h3>
+                    <p>Our partnership is built on a shared passion for technology and a commitment to excellence. Dhanusri architects the user experience; Aswathi engineers the robust back-end systems. Together, we ensure every project is both beautiful and built to last.</p>
                 </div>
             </div>
         </section>
 
         <section id="portfolio">
-            <div class="container">
-                <h2>Our Selected Work</h2>
-                <p class="section-subtitle">Here are a few projects we're proud of. Each one represents our commitment to quality, innovation, and client satisfaction.</p>
-                
-                <div class="portfolio-grid">
-                    <div class="project-card">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Project 1" class="project-image">
-                        <div class="project-info">
-                            <h3>Data Analytics Dashboard</h3>
-                            <p>A comprehensive B2B platform for data visualization and business intelligence.</p>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="Project 4" class="project-image">
-                        <div class="project-info">
-                            <h3>Digital Marketing Agency Site</h3>
-                            <p>An engaging and results-driven website for a leading digital marketing agency.</p>
-                        </div>
-                    </div>
+            <div class="section-header animate-on-scroll">
+                <h2>Our Work</h2>
+                <p>A selection of projects that showcase our dedication to quality and innovation.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="project-card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Project 1">
+                    <div class="project-info"><h3>Real-Time Analytics Platform</h3><p>A B2B dashboard for data visualization.</p></div>
                 </div>
+                <div class="project-card animate-on-scroll" style="transition-delay: 200ms;">
+                    <img src="https://images.unsplash.com/photo-1512428559084-4feacfa8df85?w=600&q=80" alt="Project 2">
+                    <div class="project-info"><h3>E-commerce Mobile App</h3><p>A sleek mobile shopping experience.</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills">
+            <div class="section-header animate-on-scroll">
+                <h2>Our Toolkit</h2>
+                <p>The technologies we use to bring our ideas to life.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-item animate-on-scroll"><i class="fab fa-react"></i> <h4>React & Next.js</h4></div>
+                <div class="skill-item animate-on-scroll" style="transition-delay: 100ms;"><i class="fab fa-node-js"></i> <h4>Node.js & Express</h4></div>
+                <div class="skill-item animate-on-scroll" style="transition-delay: 200ms;"><i class="fab fa-python"></i> <h4>Python (Django)</h4></div>
+                <div class="skill-item animate-on-scroll" style="transition-delay: 300ms;"><i class="fas fa-database"></i> <h4>SQL & NoSQL</h4></div>
+                <div class="skill-item animate-on-scroll" style="transition-delay: 400ms;"><i class="fab fa-figma"></i> <h4>UI/UX Design (Figma)</h4></div>
+                <div class="skill-item animate-on-scroll" style="transition-delay: 500ms;"><i class="fab fa-aws"></i> <h4>Cloud & DevOps</h4></div>
             </div>
         </section>
 
         <section id="contact">
-            <div class="container contact-content">
-                <h2>Let's Build Something Great</h2>
-                <p>Have a project in mind? We'd love to hear about it. Reach out to us and let's start a conversation about how we can help you achieve your goals.</p>
+            <div class="animate-on-scroll">
+                <h2>Let's Build Together</h2>
+                <p>Available for freelance projects. If you have an idea you'd like to discuss, we'd love to hear from you.
+                <br>This page was generated on: Saturday, July 19, 2025.</p>
                 <br>
-                <a href="mailto:hello@synergy.com" class="btn">Get In Touch</a>
-                
-                <ul class="social-links">
-                    <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
-                    <li><a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a></li>
-                    <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
-                </ul>
+                <a href="mailto:aswathi.dhanusri@example.com" class="btn">Get In Touch</a>
             </div>
         </section>
-
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 <a href="#">Synergy Creations</a>. All Rights Reserved.</p>
-        </div>
-    </footer>
-
     <script>
-        // Simple script for header scroll effect
-        const header = document.getElementById('header');
-        window.onscroll = function() {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        // SCRIPT FOR DYNAMIC FUNCTIONALITY
+        
+        // 1. Typing effect
+        const typingText = "We build digital experiences.";
+        const textElement = document.getElementById('typing-text');
+        let index = 0;
+        function type() {
+            if (index < typingText.length && textElement) {
+                textElement.innerHTML += typingText.charAt(index++);
+                setTimeout(type, 80);
             }
+        }
+        window.onload = () => setTimeout(type, 500);
+
+        // 2. Scroll-triggered animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+
+        // 3. Active navigation highlighting on scroll
+        const sections = document.querySelectorAll('main section');
+        const navLinks = document.querySelectorAll('.main-nav a');
+        const mainPanel = document.querySelector('.right-panel');
+
+        mainPanel.onscroll = () => {
+            let current = 'hero';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100; // -100px offset
+                if (mainPanel.scrollTop >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
         };
     </script>
 </body>
